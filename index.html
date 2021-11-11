@@ -4,42 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <title>carousel vue</title>
 </head>
 <body>
 
-    <div class="container">
+    <div id="container">
 
-        <div class="items">
+        <div :class="itemsClass">
 
-            <!-- <div class="item active">
+            <div class="item active">
 
-                <img src="img/01.jpg" alt="">
+                <img :src="slidesCar[slidesActive].image" :alt="slidesCar[slidesActive].title">
 
                 <div class="text">
 
-                    <h3>Lorem</h3>
+                    <h3>{{slidesCar[slidesActive].title}}</h3>
 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aperiam dignissimos nostrum excepturi eum eaque ullam fuga voluptates, error asperiores nisi voluptatem ratione debitis officia similique dicta consequatur dolor perspiciatis.</p>
+                    <p>{{slidesCar[slidesActive].text}}</p>
 
                 </div>
 
-            </div> -->
+            </div>
 
         </div>
 
-        <div class="thumbs">
+        <div :class="thumbsClass">
 
-            <!-- <div class="thumb active">
+            <div v-for="slideObj, i in slidesCar" class="thumb" :class="i === slidesActive ? 'active' : ''" :mykey="i">
 
-                <img src="img/01.jpg" alt="">
+                <img :src="slideObj.image" :alt="slideObj.title">
 
-            </div> -->
+            </div>
 
-            <div class="avanti"><i class="fas fa-arrow-down"></i></div>
+            <div class="avanti" @click="nextCar"><i class="fas fa-arrow-down"></i></div>
 
-            <div class="indietro"><i class="fas fa-arrow-up"></i></div>
+            <div class="indietro" @click="prevCar"><i class="fas fa-arrow-up"></i></div>
 
         </div>
 
